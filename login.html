@@ -1,0 +1,14 @@
+<button id="login">Connexion Google</button>
+
+<script type="module">
+import { auth } from "./firebase/config.js";
+import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const provider = new GoogleAuthProvider();
+
+document.getElementById("login").onclick = () => {
+  signInWithPopup(auth, provider).then(() => {
+    window.location = "index.html";
+  });
+};
+</script>
