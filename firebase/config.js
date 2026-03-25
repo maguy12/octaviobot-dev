@@ -6,23 +6,19 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
 
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-// 🔥 CONFIG FIREBASE (REMPLACE ICI)
 const firebaseConfig = {
-  apiKey: "TON_API_KEY",
-  authDomain: "TON_PROJECT.firebaseapp.com",
-  projectId: "TON_PROJECT_ID",
-  storageBucket: "TON_PROJECT.appspot.com",
-  messagingSenderId: "TON_SENDER_ID",
-  appId: "TON_APP_ID"
+  apiKey: "AIzaSyBIQYQLgaSvU3fJMVwL3WR-HG0ZrdiuTyY",
+  authDomain: "octaviobot-dev.firebaseapp.com",
+  projectId: "octaviobot-dev",
+  storageBucket: "octaviobot-dev.firebasestorage.app",
+  messagingSenderId: "461209419857",
+  appId: "1:461209419857:web:cce39bc8f496cf0fbdf870"
 };
 
-// INITIALISATION
 const app = initializeApp(firebaseConfig);
 
-// SERVICES
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// EXPORT
 export { auth, db, storage };
