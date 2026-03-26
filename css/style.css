@@ -85,6 +85,24 @@ body {
   transform: scale(1.05);
 }
 
+/* CENTER CONTENT */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.big-text {
+  max-width: 600px;
+  line-height: 1.6;
+  margin-top: 15px;
+  color: #cbd5f5;
+}
+
 /* POSTS */
 .post {
   background: #0f172a;
@@ -188,7 +206,7 @@ body {
   border-bottom-left-radius: 0;
 }
 
-/* INPUT CHAT */
+/* CHAT INPUT */
 .chat-input {
   display: flex;
   padding: 10px;
@@ -211,7 +229,7 @@ body {
   border-radius: 10px;
 }
 
-/* PAUSE SCREEN */
+/* PAUSE */
 .pause-container {
   display: flex;
   flex-direction: column;
