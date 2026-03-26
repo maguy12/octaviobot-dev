@@ -21,27 +21,24 @@
 
 <div class="messenger">
 
-  <!-- 👥 SIDEBAR UTILISATEURS -->
+  <!-- 👥 SIDEBAR -->
   <div class="sidebar">
-
     <h3>Discussions</h3>
 
-    <!-- liste dynamique Firebase -->
+    <!-- utilisateurs (plus tard dynamique) -->
     <div id="usersList"></div>
 
-    <!-- navigation -->
     <button onclick="location.href='index.html'" class="nav-btn">
       ⬅ Accueil
     </button>
-
   </div>
 
-  <!-- 💬 ZONE CHAT -->
+  <!-- 💬 CHAT -->
   <div class="chat-box">
 
     <!-- HEADER -->
     <div class="chat-header">
-      <span>💬 Chat en direct</span>
+      💬 Chat en direct
     </div>
 
     <!-- MESSAGES -->
@@ -49,7 +46,7 @@
 
     <!-- INPUT -->
     <div class="chat-input">
-      <input id="msgInput" placeholder="Écrire un message...">
+      <input id="msgInput" type="text" placeholder="Écrire un message...">
       <button id="sendBtn">Envoyer</button>
     </div>
 
@@ -59,6 +56,8 @@
 
 <!-- SCRIPTS -->
 <script src="js/app.js"></script>
+
+<!-- ⚠️ IMPORTANT MODULE -->
 <script type="module" src="js/chat.js"></script>
 
 </body>
