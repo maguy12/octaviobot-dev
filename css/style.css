@@ -1,7 +1,12 @@
 /* RESET */
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
+}
+
+body {
   background: #020617;
   color: white;
 }
@@ -10,47 +15,19 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
+  padding: 15px;
   background: #0f172a;
 }
 
-/* USER */
 .user {
   display: flex;
   align-items: center;
 }
 
 .user img {
-  width: 40px;
+  width: 35px;
   border-radius: 50%;
-  margin-right: 10px;
-}
-
-/* WELCOME */
-.welcome {
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* POSTS */
-#postsContainer {
-  padding: 20px;
-}
-
-/* ADMIN BUTTON */
-#adminPanel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-#adminPanel button {
-  background: #3b82f6;
-  border: none;
-  padding: 10px 15px;
-  color: white;
-  border-radius: 10px;
+  margin-right: 8px;
 }
 
 /* LOADER */
@@ -85,23 +62,35 @@ body {
   animation: bounce 1.5s infinite;
 }
 
-.dots span:nth-child(2) { animation-delay: 0.2s; }
-.dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes spin {
-  100% { transform: rotate(360deg); }
+/* LOGIN */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
+.login-container button {
+  padding: 12px 20px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
-/* POST */
+
+.login-container button:hover {
+  transform: scale(1.05);
+}
+
+/* POSTS */
 .post {
   background: #0f172a;
   padding: 15px;
+  margin: 15px;
   border-radius: 15px;
-  margin-bottom: 20px;
   animation: fadeIn 0.5s ease;
 }
 
@@ -131,15 +120,25 @@ body {
   background: transparent;
   border: none;
   color: #3b82f6;
-  margin-right: 10px;
   cursor: pointer;
 }
 
-/* ANIMATION */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-  }
+/* COMMENTS */
+.comments input {
+  width: 70%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.comments button {
+  padding: 5px 10px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
 /* CHAT */
 .chat-container {
   display: flex;
@@ -159,12 +158,37 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
-.message img {
-  width: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+.message.me {
+  justify-content: flex-end;
 }
 
+.message.other {
+  justify-content: flex-start;
+}
+
+.message.other img {
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.message.me .bubble {
+  background: #3b82f6;
+  border-bottom-right-radius: 0;
+}
+
+.message.other .bubble {
+  background: #1e293b;
+  border-bottom-left-radius: 0;
+}
+
+/* INPUT CHAT */
 .chat-input {
   display: flex;
   padding: 10px;
@@ -185,4 +209,36 @@ body {
   border: none;
   color: white;
   border-radius: 10px;
-  }                        
+}
+
+/* PAUSE SCREEN */
+.pause-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .bubble {
+    max-width: 90%;
+  }
+  }
