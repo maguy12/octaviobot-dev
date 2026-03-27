@@ -2,7 +2,6 @@ import { auth } from "../firebase/config.js";
 
 import {
   GoogleAuthProvider,
-  signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
   onAuthStateChanged,
@@ -11,67 +10,42 @@ import {
 
 const provider = new GoogleAuthProvider();
 
+// =======================
+// 🔐 LOGIN (REDIRECTION)
+// =======================
 const btn = document.getElementById("googleLogin");
 
-// =======================
-// 🔐 LOGIN
-// =======================
 if (btn) {
-  btn.addEventListener("click", async () => {
-
-    try {
-      // 👉 tente popup
-      await signInWithPopup(auth, provider);
-
-      window.location.href = "index.html";
-
-    } catch (error) {
-
-      console.error("Erreur popup:", error);
-
-      // 🔁 fallback si popup bloque
-      if (
-        error.code === "auth/popup-blocked" ||
-        error.code === "auth/cancelled-popup-request"
-      ) {
-        await signInWithRedirect(auth, provider);
-      }
-
-      // ❌ domaine non autorisé
-      if (error.code === "auth/unauthorized-domain") {
-        alert("Ajoute localhost dans Firebase !");
-      }
-    }
-
-  });
+  btn.onclick = async () => {
+    await signInWithRedirect(auth, provider);
+  };
 }
 
 // =======================
-// 🔁 RETOUR REDIRECTION
+// 🔁 RETOUR LOGIN
 // =======================
 getRedirectResult(auth)
   .then((result) => {
     if (result) {
+      console.log("Connecté !");
       window.location.href = "index.html";
     }
   })
   .catch((error) => {
-    console.error("Erreur redirect:", error);
+    console.error("Erreur:", error);
   });
 
 // =======================
-// 🔐 PROTECTION PAGE
+// 🔐 PROTECTION
 // =======================
 onAuthStateChanged(auth, (user) => {
 
   const isLoginPage = window.location.pathname.includes("login.html");
 
-  // ❌ pas connecté
   if (!user && !isLoginPage) {
     window.location.href = "login.html";
   }
 
-  // ✅ déjà connecté
   if (user && isLoginPage) {
     window.location.href = "index.html";
   }
@@ -79,7 +53,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // =======================
-// 🚪 LOGOUT GLOBAL
+// 🚪 LOGOUT
 // =======================
 window.logoutUser = async () => {
   await signOut(auth);
